@@ -307,11 +307,7 @@ input{font-family:'Inter',sans-serif;}
 .reg-chk input[type=checkbox]{accent-color:#16a34a;}
 .reg-chk-txt{font-size:11.5px;color:rgba(255,255,255,.75);line-height:1.55;}
 .reg-chk-txt a{color:var(--silver2);}
-.landing-card{width:100%;max-width:340px;aspect-ratio:1/1;border-radius:20px;overflow:hidden;position:relative;cursor:pointer;border:1.5px solid var(--silver-border2);transition:border-color .2s,transform .1s;}
-.landing-card:hover{border-color:var(--silver2);}
-.landing-card:active{transform:scale(.99);}
 .landing-btns{display:flex;flex-direction:column;gap:12px;width:100%;max-width:220px;opacity:0;transform:translateY(6px);transition:opacity .25s,transform .25s;pointer-events:none;}
-.landing-card.reveal .landing-btns{opacity:1;transform:none;pointer-events:auto;}
 .landing-btn{width:100%;height:46px;border-radius:10px;font-family:'Inter',sans-serif;font-size:14px;font-weight:600;cursor:pointer;transition:.15s;letter-spacing:.3px;}
 .landing-btn:active{transform:scale(.97);}
 .landing-btn-play{border:1.5px solid #1a5c1a;background:radial-gradient(ellipse at 100% 100%,#0d3b0d 0%,transparent 60%),radial-gradient(ellipse at 0% 0%,#0d3b0d 0%,#000 60%);color:#fff;}
@@ -641,8 +637,8 @@ input{font-family:'Inter',sans-serif;}
   </header>
   <div class="drw-bg" id="drw-bg" onclick="closeDrw()"></div>
   <nav class="drw" id="drw">
-    <div class="drw-top"><div class="drw-logo">⬡ CRYPTOCASINO</div><div class="drw-user" id="drw-name">—</div></div>
-    <div class="drw-balcard"><div class="drw-bl">Balance</div><div class="drw-bv" id="drw-bv">0.00</div><div class="drw-bu">USDT</div></div>
+    <div class="drw-top"><div class="drw-logo">⬡ MilionX</div><div class="drw-user" id="drw-name">—</div></div>
+    <div class="drw-balcard"><div class="drw-bl">Balance</div><div class="drw-bv" id="drw-bv">0.00</div><div class="drw-bu" id="drw-bu"></div></div>
     <div class="drw-nav">
       <div class="di on" id="ni-game" onclick="showView('game')">Play</div>
       <div class="di" id="ni-deposit" onclick="showView('deposit')">Deposit</div>
@@ -676,6 +672,7 @@ input{font-family:'Inter',sans-serif;}
   </div>
   <div class="view" id="v-profile">
     <div class="prof-wrap">
+      <div class="kyc-prof-status" id="kyc-prof-status" style="display:none;"></div>
       <div class="prof-card" id="prof-card">
         <div class="prof-card-bg"></div>
         <div class="prof-card-inner" id="prof-card-inner"></div>
@@ -1624,6 +1621,7 @@ function enterApp(user){
   document.getElementById('s-app').classList.add('on');
   document.getElementById('drw-name').textContent=(user.firstName||'')+' '+(user.lastName||'');
   ['a-bal','drw-bv'].forEach(id=>{const e=document.getElementById(id);if(e)e.textContent=fmtBal(user.balance||0);});
+  const dbu=document.getElementById('drw-bu');if(dbu)dbu.textContent=curSym();
   buildSlot('a-slot',false);
   db.ref('casino_users/'+user.key+'/balance').on('value',s=>{if(s.exists()){CU.balance=parseFloat(s.val())||0;updBal('a-slot',false);['a-bal','drw-bv'].forEach(id=>{const e=document.getElementById(id);if(e)e.textContent=fmtBal(CU.balance);});}});
   initSupNotifications();
@@ -1671,7 +1669,25 @@ function closeM(id){
 document.querySelectorAll('.mbg').forEach(bg=>bg.addEventListener('click',e=>{if(e.target===bg)closeM(bg.id);}));
 function toggleDrw(){document.getElementById('drw').classList.toggle('open');document.getElementById('drw-bg').classList.toggle('on');}
 function closeDrw(){document.getElementById('drw').classList.remove('open');document.getElementById('drw-bg').classList.remove('on');}
-function showView(n){closeDrw();document.querySelectorAll('.view').forEach(v=>v.classList.remove('on'));document.querySelectorAll('.di').forEach(d=>d.classList.remove('on'));document.getElementById('v-'+n).classList.add('on');const ni=document.getElementById('ni-'+n);if(ni)ni.classList.add('on');if(n==='game')backToAppLanding();if(n==='profile')fillProf();if(n==='deposit')onDepInput();if(n==='withdraw')buildWithdrawList();if(n==='withdraw-notes')buildWithdrawNotes();if(n==='settings')loadSettings();if(n==='invite')loadInvite();if(n==='support'){loadSupport();clearSupBadges();}}
+function showView(n){
+  closeDrw();
+  document.querySelectorAll('.view').forEach(v=>v.classList.remove('on'));
+  document.querySelectorAll('.di').forEach(d=>d.classList.remove('on'));
+  const vEl=document.getElementById('v-'+n);
+  if(vEl)vEl.classList.add('on');
+  const pNav={'withdraw-notes':'withdraw','withdraw-detail':'withdraw','convert-picker':'withdraw','convert-slider':'withdraw'};
+  const navId=pNav[n]||n;
+  const ni=document.getElementById('ni-'+navId);
+  if(ni)ni.classList.add('on');
+  if(n==='game')backToAppLanding();
+  if(n==='profile')fillProf();
+  if(n==='deposit')onDepInput();
+  if(n==='withdraw')buildWithdrawList();
+  if(n==='withdraw-notes')buildWithdrawNotes();
+  if(n==='settings')loadSettings();
+  if(n==='invite')loadInvite();
+  if(n==='support'){loadSupport();clearSupBadges();}
+}
 function fillProf(){
   if(!CU)return;
   const kycEl=document.getElementById('kyc-prof-status');
@@ -1830,6 +1846,8 @@ function loadSettings(){
   ['st-pin','st-pin2','st-pin-old','st-pin-new','st-pin-new2','st-pw-old','st-pw-new','st-pw-new2'].forEach(id=>{const el=document.getElementById(id);if(el)el.value='';});
   ['st-pin-err','st-pin-change-err','st-pw-err'].forEach(id=>{const el=document.getElementById(id);if(el)el.textContent='';});
   selectedCurrency=CU.currency||'USD';
+  ['a-bal','drw-bv'].forEach(id=>{const e=document.getElementById(id);if(e)e.textContent=fmtBal(CU.balance||0);});
+  const dbu3=document.getElementById('drw-bu');if(dbu3)dbu3.textContent=curSym();
   selectedCountry=CU.country||'GB';
   document.querySelectorAll('#st-currency-seg .st-seg-btn').forEach(b=>b.classList.toggle('sel',b.dataset.cur===selectedCurrency));
   document.querySelectorAll('#st-country-seg .st-seg-btn').forEach(b=>b.classList.toggle('sel',b.dataset.country===selectedCountry));
@@ -2752,7 +2770,7 @@ function openDemoGame(){
 function backToLanding(){
   document.getElementById('s-guest').classList.remove('on');
   document.getElementById('s-landing').classList.add('on');
-  const c=document.getElementById('landing-card');
+  const c=document.getElementById('gal-card-landing');
   if(c)c.classList.remove('reveal');
 }
 
