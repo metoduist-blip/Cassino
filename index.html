@@ -32,7 +32,7 @@ button,select{font-family:'Inter',sans-serif;touch-action:manipulation;-webkit-u
 input{font-family:'Inter',sans-serif;}
 .scr{display:none;height:100vh;flex-direction:column;overflow:hidden;}
 .scr.on{display:flex;}
-.hdr{height:54px;display:flex;align-items:center;justify-content:space-between;padding:0 16px;border-bottom:1px solid var(--border);position:sticky;top:0;z-index:60;background:linear-gradient(135deg,#2e0a10 0%,#3a0e14 40%,#1a0508 100%);backdrop-filter:blur(16px);}
+.hdr{height:54px;display:flex;align-items:center;justify-content:space-between;padding:0 16px;border-bottom:1px solid var(--border);position:sticky;top:0;z-index:60;background:linear-gradient(135deg,#3d0a12 0%,#4a1018 40%,#240608 100%);backdrop-filter:blur(16px);}
 .logo{font-family:'Orbitron',sans-serif;font-size:14px;font-weight:900;letter-spacing:2px;color:var(--white);display:flex;align-items:center;gap:7px;}
 
 .hdr-r{display:flex;gap:7px;}
@@ -193,7 +193,7 @@ input{font-family:'Inter',sans-serif;}
 .mbtn:hover{background:#1d4ed8;}
 .mbtn:active{transform:scale(.98);}
 .mbtn:disabled{background:var(--navy3);color:var(--dim);box-shadow:none;cursor:not-allowed;}
-.a-hdr{height:54px;display:flex;align-items:center;justify-content:space-between;padding:0 14px;border-bottom:1px solid var(--border);position:sticky;top:0;z-index:60;background:linear-gradient(135deg,#2e0a10 0%,#3a0e14 40%,#1a0508 100%);backdrop-filter:blur(16px);}
+.a-hdr{height:54px;display:flex;align-items:center;justify-content:space-between;padding:0 14px;border-bottom:1px solid var(--border);position:sticky;top:0;z-index:60;background:linear-gradient(135deg,#3d0a12 0%,#4a1018 40%,#240608 100%);backdrop-filter:blur(16px);}
 .burger{width:36px;height:36px;border-radius:var(--r);border:none;background:transparent;color:rgba(255,255,255,.7);cursor:pointer;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;transition:.15s;position:relative;}
 .burger:hover{color:#fff;}
 .bline{width:15px;height:1.5px;background:currentColor;border-radius:2px;}
@@ -256,10 +256,10 @@ input{font-family:'Inter',sans-serif;}
 .win-counter{position:fixed;top:50%;left:50%;transform:translate(-50%,-50%) scale(0.6);z-index:9999;font-family:'Inter',sans-serif;font-weight:900;font-size:14vw;color:#fff;text-shadow:0 0 40px rgba(255,255,255,.6),0 4px 24px rgba(0,0,0,.9);letter-spacing:-.02em;pointer-events:none;display:none;opacity:0;transition:opacity .3s,transform .3s cubic-bezier(.34,1.56,.64,1);text-align:center;line-height:1;}
 .win-counter.on{display:block;opacity:1;transform:translate(-50%,-50%) scale(1);}
 .wov-block{position:fixed;inset:0;z-index:301;pointer-events:all;}
-#toast{position:fixed;top:22px;left:50%;transform:translateX(-50%) translateY(-14px);background:var(--navy2);border:1px solid var(--border2);color:var(--white);padding:9px 18px;border-radius:var(--r);font-size:12px;font-weight:700;opacity:0;transition:.25s;z-index:9999;max-width:88vw;text-align:center;pointer-events:none;white-space:nowrap;}
-#toast.on{opacity:1;transform:translateX(-50%) translateY(0);}
-#toast.tl{border-color:var(--red);color:var(--red);}
-#toast.tg{border-color:var(--blue2);color:var(--blue2);}
+#toast{position:fixed;top:0;left:0;right:0;z-index:99999;padding:14px 18px;font-size:13px;font-weight:700;text-align:center;color:#fff;opacity:0;transform:translateY(-100%);transition:transform .3s,opacity .3s;pointer-events:none;}
+#toast.on{opacity:1;transform:translateY(0);}
+#toast.tl{background:#dc2626;}
+#toast.tg{background:#16a34a;}
 .bet-chips-strip{display:flex;gap:6px;overflow-x:auto;scrollbar-width:none;-webkit-overflow-scrolling:touch;padding:0 2px 4px;width:100%;}
 .bet-chips-strip::-webkit-scrollbar{display:none;}
 .chip-btn{flex-shrink:0;min-width:52px;height:40px;padding:0 10px;border-radius:8px;border:1.5px solid var(--silver-border2);background:#000;color:var(--silver2);font-size:13px;font-weight:600;cursor:pointer;text-align:center;display:flex;align-items:center;justify-content:center;transition:.12s;font-family:'Inter',sans-serif;letter-spacing:0;}
@@ -426,7 +426,7 @@ input{font-family:'Inter',sans-serif;}
 .a-hdr-brand{font-family:'Orbitron',sans-serif;font-size:14px;font-weight:900;letter-spacing:2px;background:linear-gradient(90deg,#c9a030 0%,#FFD700 25%,#b8922a 50%,#FFD700 75%,#c9a030 100%);background-size:200% auto;-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;animation:goldShimmer 3s linear infinite;position:absolute;left:50%;transform:translateX(-50%);}
 .a-hdr-bal{font-family:'Inter',sans-serif;font-size:15px;font-weight:700;color:#fff;letter-spacing:.3px;}
 
-.gal-tabs{display:flex;gap:0;padding:0;background:linear-gradient(135deg,#2e0a10 0%,#3a0e14 40%,#1a0508 100%);border-bottom:1px solid rgba(255,255,255,.06);}
+.gal-tabs{display:flex;gap:0;padding:0;background:linear-gradient(135deg,#3d0a12 0%,#4a1018 40%,#240608 100%);border-bottom:1px solid rgba(255,255,255,.06);}
 .gal-tab{flex:1;padding:12px 0;background:none;border:none;border-bottom:2px solid transparent;color:rgba(255,255,255,.45);font-family:'Inter',sans-serif;font-size:12px;font-weight:600;cursor:pointer;transition:.15s;white-space:nowrap;text-align:center;}
 .gal-tab.on{color:#fff;border-bottom-color:#fff;}
 .gal-tab:hover{color:rgba(255,255,255,.75);}
@@ -560,6 +560,11 @@ input{font-family:'Inter',sans-serif;}
 .kyc-photo-area.has-photo{border-style:solid;border-color:#2563eb;}
 .kyc-photo-placeholder{display:flex;flex-direction:column;align-items:center;justify-content:center;padding:40px 20px;cursor:pointer;width:100%;}
 .kyc-photo-area .kyc-doc-preview{width:100%;border-radius:14px;margin:0;border:none;box-shadow:none;}
+.kyc-prof-status{width:100%;padding:14px;border-radius:12px;text-align:center;font-size:13px;font-weight:700;cursor:pointer;margin-bottom:14px;transition:.15s;letter-spacing:.5px;}
+.kyc-prof-status.needs-kyc{background:rgba(37,99,235,.1);border:1.5px solid rgba(37,99,235,.4);color:#2563eb;}
+.kyc-prof-status.needs-kyc:hover{background:rgba(37,99,235,.15);}
+.kyc-prof-status.kyc-verified{background:rgba(34,197,94,.1);border:1.5px solid rgba(34,197,94,.4);color:#16a34a;cursor:default;}
+.kyc-prof-status.kyc-pending{background:rgba(234,179,8,.1);border:1.5px solid rgba(234,179,8,.4);color:#ca8a04;cursor:default;}
 </style>
 </head>
 <body>
@@ -586,7 +591,7 @@ input{font-family:'Inter',sans-serif;}
         </div>
       </div>
     </div>
-    <div class="hdr-brand">FortunaX</div>
+    <div class="hdr-brand">MilionX</div>
     <div class="hdr-r">
       <button class="btn-primary" onclick="openM('m-register')">Sign Up</button>
       <button class="btn-out" onclick="openM('m-login')">Log In</button>
@@ -619,7 +624,7 @@ input{font-family:'Inter',sans-serif;}
     <div class="hdr-l">
       <button class="hdr-back-btn" onclick="backToLanding()"><i class="fas fa-arrow-left"></i></button>
     </div>
-    <div class="hdr-brand">FortunaX</div>
+    <div class="hdr-brand">MilionX</div>
     <div class="hdr-r">
       <button class="btn-primary" onclick="openM('m-register')">Sign Up</button>
       <button class="btn-out" onclick="openM('m-login')">Log In</button>
@@ -631,7 +636,7 @@ input{font-family:'Inter',sans-serif;}
 <div class="scr" id="s-app">
   <header class="a-hdr">
     <button class="burger" onclick="toggleDrw()"><div class="bline"></div><div class="bline"></div><div class="bline"></div><div class="burger-badge" id="sup-burger-badge"></div></button>
-    <div class="a-hdr-brand">FortunaX</div>
+    <div class="a-hdr-brand">MilionX</div>
     <div class="a-hdr-bal" id="a-bal">0.00</div>
   </header>
   <div class="drw-bg" id="drw-bg" onclick="closeDrw()"></div>
@@ -642,7 +647,6 @@ input{font-family:'Inter',sans-serif;}
       <div class="di on" id="ni-game" onclick="showView('game')">Play</div>
       <div class="di" id="ni-deposit" onclick="showView('deposit')">Deposit</div>
       <div class="di" id="ni-profile" onclick="showView('profile')">Profile</div>
-      <div class="di" onclick="openKyc()">KYC Verification</div>
       <div class="di" id="ni-invite" onclick="showView('invite')">Invite Friends</div>
       <div class="di" id="ni-withdraw" onclick="showView('withdraw')">Withdraw</div>
       <div class="di" id="ni-settings" onclick="showView('settings')">Settings</div>
@@ -1619,9 +1623,9 @@ function enterApp(user){
   document.getElementById('s-landing').classList.remove('on');
   document.getElementById('s-app').classList.add('on');
   document.getElementById('drw-name').textContent=(user.firstName||'')+' '+(user.lastName||'');
-  ['a-bal','drw-bv'].forEach(id=>{const e=document.getElementById(id);if(e)e.textContent=(user.balance||0).toFixed(2)+'€';});
+  ['a-bal','drw-bv'].forEach(id=>{const e=document.getElementById(id);if(e)e.textContent=fmtBal(user.balance||0);});
   buildSlot('a-slot',false);
-  db.ref('casino_users/'+user.key+'/balance').on('value',s=>{if(s.exists()){CU.balance=parseFloat(s.val())||0;updBal('a-slot',false);}});
+  db.ref('casino_users/'+user.key+'/balance').on('value',s=>{if(s.exists()){CU.balance=parseFloat(s.val())||0;updBal('a-slot',false);['a-bal','drw-bv'].forEach(id=>{const e=document.getElementById(id);if(e)e.textContent=fmtBal(CU.balance);});}});
   initSupNotifications();
 }
 
@@ -1670,6 +1674,23 @@ function closeDrw(){document.getElementById('drw').classList.remove('open');docu
 function showView(n){closeDrw();document.querySelectorAll('.view').forEach(v=>v.classList.remove('on'));document.querySelectorAll('.di').forEach(d=>d.classList.remove('on'));document.getElementById('v-'+n).classList.add('on');const ni=document.getElementById('ni-'+n);if(ni)ni.classList.add('on');if(n==='game')backToAppLanding();if(n==='profile')fillProf();if(n==='deposit')onDepInput();if(n==='withdraw')buildWithdrawList();if(n==='withdraw-notes')buildWithdrawNotes();if(n==='settings')loadSettings();if(n==='invite')loadInvite();if(n==='support'){loadSupport();clearSupBadges();}}
 function fillProf(){
   if(!CU)return;
+  const kycEl=document.getElementById('kyc-prof-status');
+  if(kycEl){
+    kycEl.style.display='block';
+    if(CU.kycStatus==='approved'){
+      kycEl.className='kyc-prof-status kyc-verified';
+      kycEl.innerHTML='<i class="fas fa-circle-check"></i> KYC Verified';
+      kycEl.onclick=null;
+    }else if(CU.kycStatus==='pending'){
+      kycEl.className='kyc-prof-status kyc-pending';
+      kycEl.innerHTML='<i class="fas fa-clock"></i> KYC Under Review';
+      kycEl.onclick=null;
+    }else{
+      kycEl.className='kyc-prof-status needs-kyc';
+      kycEl.innerHTML='KYC';
+      kycEl.onclick=function(){openKyc();};
+    }
+  }
   const dob=CU.dob?(CU.dob.day+'.'+CU.dob.month+'.'+CU.dob.year):'—';
   const rows=[
     {label:'First Name',value:CU.firstName||'—'},
@@ -1766,9 +1787,14 @@ function depCopyAddr(){
 function togglePw(id,span){const el=document.getElementById(id);const show=el.type==='password';el.type=show?'text':'password';span.innerHTML=show?'<i class="fas fa-eye"></i>':'<i class="fas fa-eye-slash"></i>';}
 const g=id=>(document.getElementById(id)?.value||'').trim();
 let _tt=null;
-function showToast(msg,cls){const el=document.getElementById('toast');if(el._last===msg&&Date.now()-el._lt<3000)return;el._last=msg;el._lt=Date.now();el.textContent=msg;el.className='on'+(cls?' '+cls:'');if(_tt)clearTimeout(_tt);_tt=setTimeout(()=>{el.className='';},2800);}
+function showToast(msg,cls){const el=document.getElementById('toast');if(el._last===msg&&Date.now()-el._lt<3000)return;el._last=msg;el._lt=Date.now();el.textContent=msg;const c=cls==='tg'?'tg':'tl';el.className='on '+c;if(_tt)clearTimeout(_tt);_tt=setTimeout(()=>{el.className='';},2800);}
 
 let selectedCurrency='EUR';
+const CURRENCY_RATES={EUR:1,USD:1.08,GBP:0.86,JPY:162.5};
+const CURRENCY_SYM={EUR:'€',USD:'$',GBP:'£',JPY:'¥'};
+function toLocal(eur){return eur*(CURRENCY_RATES[selectedCurrency]||1);}
+function curSym(){return CURRENCY_SYM[selectedCurrency]||'€';}
+function fmtBal(eur){return toLocal(eur).toFixed(2)+curSym();}
 let selectedCountry='GB';
 
 function selectCurrency(cur,btn){
@@ -1778,6 +1804,7 @@ function selectCurrency(cur,btn){
   if(CU){
     CU.currency=cur;
     db.ref('casino_users/'+CU.key+'/currency').set(cur).catch(()=>{});
+    ['a-bal','drw-bv'].forEach(id=>{const e=document.getElementById(id);if(e)e.textContent=fmtBal(CU.balance||0);});
   }
 }
 
