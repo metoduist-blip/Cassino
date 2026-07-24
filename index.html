@@ -32,7 +32,7 @@ button,select{font-family:'Inter',sans-serif;touch-action:manipulation;-webkit-u
 input{font-family:'Inter',sans-serif;}
 .scr{display:none;height:100vh;flex-direction:column;overflow:hidden;}
 .scr.on{display:flex;}
-.hdr{height:54px;display:flex;align-items:center;justify-content:space-between;padding:0 16px;border-bottom:1px solid var(--border);position:sticky;top:0;z-index:60;background:linear-gradient(135deg,#3d0a12 0%,#4a1018 40%,#240608 100%);backdrop-filter:blur(16px);}
+.hdr{height:54px;display:flex;align-items:center;justify-content:space-between;padding:0 16px;border-bottom:1px solid var(--border);position:sticky;top:0;z-index:60;background:linear-gradient(135deg,#2e0a10 0%,#3a0e14 40%,#1a0508 100%);backdrop-filter:blur(16px);}
 .logo{font-family:'Orbitron',sans-serif;font-size:14px;font-weight:900;letter-spacing:2px;color:var(--white);display:flex;align-items:center;gap:7px;}
 
 .hdr-r{display:flex;gap:7px;}
@@ -193,7 +193,7 @@ input{font-family:'Inter',sans-serif;}
 .mbtn:hover{background:#1d4ed8;}
 .mbtn:active{transform:scale(.98);}
 .mbtn:disabled{background:var(--navy3);color:var(--dim);box-shadow:none;cursor:not-allowed;}
-.a-hdr{height:54px;display:flex;align-items:center;justify-content:space-between;padding:0 14px;border-bottom:1px solid var(--border);position:sticky;top:0;z-index:60;background:linear-gradient(135deg,#3d0a12 0%,#4a1018 40%,#240608 100%);backdrop-filter:blur(16px);}
+.a-hdr{height:54px;display:flex;align-items:center;justify-content:space-between;padding:0 14px;border-bottom:1px solid var(--border);position:sticky;top:0;z-index:60;background:linear-gradient(135deg,#2e0a10 0%,#3a0e14 40%,#1a0508 100%);backdrop-filter:blur(16px);}
 .burger{width:36px;height:36px;border-radius:var(--r);border:none;background:transparent;color:rgba(255,255,255,.7);cursor:pointer;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;transition:.15s;position:relative;}
 .burger:hover{color:#fff;}
 .bline{width:15px;height:1.5px;background:currentColor;border-radius:2px;}
@@ -256,10 +256,10 @@ input{font-family:'Inter',sans-serif;}
 .win-counter{position:fixed;top:50%;left:50%;transform:translate(-50%,-50%) scale(0.6);z-index:9999;font-family:'Inter',sans-serif;font-weight:900;font-size:14vw;color:#fff;text-shadow:0 0 40px rgba(255,255,255,.6),0 4px 24px rgba(0,0,0,.9);letter-spacing:-.02em;pointer-events:none;display:none;opacity:0;transition:opacity .3s,transform .3s cubic-bezier(.34,1.56,.64,1);text-align:center;line-height:1;}
 .win-counter.on{display:block;opacity:1;transform:translate(-50%,-50%) scale(1);}
 .wov-block{position:fixed;inset:0;z-index:301;pointer-events:all;}
-#toast{position:fixed;top:0;left:0;right:0;z-index:99999;padding:14px 18px;font-size:13px;font-weight:700;text-align:center;color:#fff;opacity:0;transform:translateY(-100%);transition:transform .3s,opacity .3s;pointer-events:none;}
-#toast.on{opacity:1;transform:translateY(0);}
-#toast.tl{background:#dc2626;}
-#toast.tg{background:#16a34a;}
+#toast{position:fixed;top:22px;left:50%;transform:translateX(-50%) translateY(-14px);background:var(--navy2);border:1px solid var(--border2);color:var(--white);padding:9px 18px;border-radius:var(--r);font-size:12px;font-weight:700;opacity:0;transition:.25s;z-index:9999;max-width:88vw;text-align:center;pointer-events:none;white-space:nowrap;}
+#toast.on{opacity:1;transform:translateX(-50%) translateY(0);}
+#toast.tl{border-color:var(--red);color:var(--red);}
+#toast.tg{border-color:var(--blue2);color:var(--blue2);}
 .bet-chips-strip{display:flex;gap:6px;overflow-x:auto;scrollbar-width:none;-webkit-overflow-scrolling:touch;padding:0 2px 4px;width:100%;}
 .bet-chips-strip::-webkit-scrollbar{display:none;}
 .chip-btn{flex-shrink:0;min-width:52px;height:40px;padding:0 10px;border-radius:8px;border:1.5px solid var(--silver-border2);background:#000;color:var(--silver2);font-size:13px;font-weight:600;cursor:pointer;text-align:center;display:flex;align-items:center;justify-content:center;transition:.12s;font-family:'Inter',sans-serif;letter-spacing:0;}
@@ -307,7 +307,11 @@ input{font-family:'Inter',sans-serif;}
 .reg-chk input[type=checkbox]{accent-color:#16a34a;}
 .reg-chk-txt{font-size:11.5px;color:rgba(255,255,255,.75);line-height:1.55;}
 .reg-chk-txt a{color:var(--silver2);}
+.landing-card{width:100%;max-width:340px;aspect-ratio:1/1;border-radius:20px;overflow:hidden;position:relative;cursor:pointer;border:1.5px solid var(--silver-border2);transition:border-color .2s,transform .1s;}
+.landing-card:hover{border-color:var(--silver2);}
+.landing-card:active{transform:scale(.99);}
 .landing-btns{display:flex;flex-direction:column;gap:12px;width:100%;max-width:220px;opacity:0;transform:translateY(6px);transition:opacity .25s,transform .25s;pointer-events:none;}
+.landing-card.reveal .landing-btns{opacity:1;transform:none;pointer-events:auto;}
 .landing-btn{width:100%;height:46px;border-radius:10px;font-family:'Inter',sans-serif;font-size:14px;font-weight:600;cursor:pointer;transition:.15s;letter-spacing:.3px;}
 .landing-btn:active{transform:scale(.97);}
 .landing-btn-play{border:1.5px solid #1a5c1a;background:radial-gradient(ellipse at 100% 100%,#0d3b0d 0%,transparent 60%),radial-gradient(ellipse at 0% 0%,#0d3b0d 0%,#000 60%);color:#fff;}
@@ -422,7 +426,7 @@ input{font-family:'Inter',sans-serif;}
 .a-hdr-brand{font-family:'Orbitron',sans-serif;font-size:14px;font-weight:900;letter-spacing:2px;background:linear-gradient(90deg,#c9a030 0%,#FFD700 25%,#b8922a 50%,#FFD700 75%,#c9a030 100%);background-size:200% auto;-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;animation:goldShimmer 3s linear infinite;position:absolute;left:50%;transform:translateX(-50%);}
 .a-hdr-bal{font-family:'Inter',sans-serif;font-size:15px;font-weight:700;color:#fff;letter-spacing:.3px;}
 
-.gal-tabs{display:flex;gap:0;padding:0;background:linear-gradient(135deg,#3d0a12 0%,#4a1018 40%,#240608 100%);border-bottom:1px solid rgba(255,255,255,.06);}
+.gal-tabs{display:flex;gap:0;padding:0;background:linear-gradient(135deg,#2e0a10 0%,#3a0e14 40%,#1a0508 100%);border-bottom:1px solid rgba(255,255,255,.06);}
 .gal-tab{flex:1;padding:12px 0;background:none;border:none;border-bottom:2px solid transparent;color:rgba(255,255,255,.45);font-family:'Inter',sans-serif;font-size:12px;font-weight:600;cursor:pointer;transition:.15s;white-space:nowrap;text-align:center;}
 .gal-tab.on{color:#fff;border-bottom-color:#fff;}
 .gal-tab:hover{color:rgba(255,255,255,.75);}
@@ -556,11 +560,6 @@ input{font-family:'Inter',sans-serif;}
 .kyc-photo-area.has-photo{border-style:solid;border-color:#2563eb;}
 .kyc-photo-placeholder{display:flex;flex-direction:column;align-items:center;justify-content:center;padding:40px 20px;cursor:pointer;width:100%;}
 .kyc-photo-area .kyc-doc-preview{width:100%;border-radius:14px;margin:0;border:none;box-shadow:none;}
-.kyc-prof-status{width:100%;padding:14px;border-radius:12px;text-align:center;font-size:13px;font-weight:700;cursor:pointer;margin-bottom:14px;transition:.15s;letter-spacing:.5px;}
-.kyc-prof-status.needs-kyc{background:rgba(37,99,235,.1);border:1.5px solid rgba(37,99,235,.4);color:#2563eb;}
-.kyc-prof-status.needs-kyc:hover{background:rgba(37,99,235,.15);}
-.kyc-prof-status.kyc-verified{background:rgba(34,197,94,.1);border:1.5px solid rgba(34,197,94,.4);color:#16a34a;cursor:default;}
-.kyc-prof-status.kyc-pending{background:rgba(234,179,8,.1);border:1.5px solid rgba(234,179,8,.4);color:#ca8a04;cursor:default;}
 </style>
 </head>
 <body>
@@ -578,7 +577,7 @@ input{font-family:'Inter',sans-serif;}
         </div>
       </div>
       <div class="hdr-dd" id="cur-dd">
-        <button class="hdr-dd-btn" onclick="toggleDD('cur-dd')" id="cur-dd-btn">$</button>
+        <button class="hdr-dd-btn" onclick="toggleDD('cur-dd')">€</button>
         <div class="hdr-dd-menu hdr-dd-wide">
           <button class="hdr-dd-row" onclick="pickCur('EUR',this,'€')"><span>€</span>Euro</button>
           <button class="hdr-dd-row" onclick="pickCur('USD',this,'$')"><span>$</span>US Dollar</button>
@@ -587,7 +586,7 @@ input{font-family:'Inter',sans-serif;}
         </div>
       </div>
     </div>
-    <div class="hdr-brand">MilionX</div>
+    <div class="hdr-brand">FortunaX</div>
     <div class="hdr-r">
       <button class="btn-primary" onclick="openM('m-register')">Sign Up</button>
       <button class="btn-out" onclick="openM('m-login')">Log In</button>
@@ -620,7 +619,7 @@ input{font-family:'Inter',sans-serif;}
     <div class="hdr-l">
       <button class="hdr-back-btn" onclick="backToLanding()"><i class="fas fa-arrow-left"></i></button>
     </div>
-    <div class="hdr-brand">MilionX</div>
+    <div class="hdr-brand">FortunaX</div>
     <div class="hdr-r">
       <button class="btn-primary" onclick="openM('m-register')">Sign Up</button>
       <button class="btn-out" onclick="openM('m-login')">Log In</button>
@@ -632,17 +631,18 @@ input{font-family:'Inter',sans-serif;}
 <div class="scr" id="s-app">
   <header class="a-hdr">
     <button class="burger" onclick="toggleDrw()"><div class="bline"></div><div class="bline"></div><div class="bline"></div><div class="burger-badge" id="sup-burger-badge"></div></button>
-    <div class="a-hdr-brand">MilionX</div>
+    <div class="a-hdr-brand">FortunaX</div>
     <div class="a-hdr-bal" id="a-bal">0.00</div>
   </header>
   <div class="drw-bg" id="drw-bg" onclick="closeDrw()"></div>
   <nav class="drw" id="drw">
-    <div class="drw-top"><div class="drw-logo">⬡ MilionX</div><div class="drw-user" id="drw-name">—</div></div>
-    <div class="drw-balcard"><div class="drw-bl">Balance</div><div class="drw-bv" id="drw-bv">0.00</div><div class="drw-bu" id="drw-bu"></div></div>
+    <div class="drw-top"><div class="drw-logo">⬡ CRYPTOCASINO</div><div class="drw-user" id="drw-name">—</div></div>
+    <div class="drw-balcard"><div class="drw-bl">Balance</div><div class="drw-bv" id="drw-bv">0.00</div><div class="drw-bu">USDT</div></div>
     <div class="drw-nav">
       <div class="di on" id="ni-game" onclick="showView('game')">Play</div>
       <div class="di" id="ni-deposit" onclick="showView('deposit')">Deposit</div>
       <div class="di" id="ni-profile" onclick="showView('profile')">Profile</div>
+      <div class="di" onclick="openKyc()">KYC Verification</div>
       <div class="di" id="ni-invite" onclick="showView('invite')">Invite Friends</div>
       <div class="di" id="ni-withdraw" onclick="showView('withdraw')">Withdraw</div>
       <div class="di" id="ni-settings" onclick="showView('settings')">Settings</div>
@@ -672,7 +672,6 @@ input{font-family:'Inter',sans-serif;}
   </div>
   <div class="view" id="v-profile">
     <div class="prof-wrap">
-      <div class="kyc-prof-status" id="kyc-prof-status" style="display:none;"></div>
       <div class="prof-card" id="prof-card">
         <div class="prof-card-bg"></div>
         <div class="prof-card-inner" id="prof-card-inner"></div>
@@ -681,7 +680,7 @@ input{font-family:'Inter',sans-serif;}
   </div>
   <div class="view" id="v-invite">
     <div class="inv-page">
-      <div class="inv-hero">Invite a friend and get a bonus of up to $10 after meeting the conditions.</div>
+      <div class="inv-hero">Invite a friend and get a bonus of up to €10 after meeting the conditions.</div>
       <div class="inv-card-new">
         <div class="inv-lbl">Your Invite Code</div>
         <div class="inv-code-row-new">
@@ -702,7 +701,7 @@ input{font-family:'Inter',sans-serif;}
           <div class="inv-stat-lbl">People Invited</div>
         </div>
         <div class="inv-stat-box">
-          <div class="inv-stat-num" id="inv-earned">$0.00</div>
+          <div class="inv-stat-num" id="inv-earned">€0.00</div>
           <div class="inv-stat-lbl">Total Earned</div>
         </div>
       </div>
@@ -740,7 +739,7 @@ input{font-family:'Inter',sans-serif;}
           <div class="dep-input-lbl">Deposit Amount</div>
           <div class="dep-amount-wrap">
             <input type="number" class="dep-amount-in" id="dep-amount-in" min="10" placeholder="0" inputmode="decimal" oninput="onDepInput()">
-            <span class="dep-eur-tag" id="dep-cur-tag">$</span>
+            <span class="dep-eur-tag">€</span>
           </div>
         </div>
       </div>
@@ -752,7 +751,7 @@ input{font-family:'Inter',sans-serif;}
       <div class="wd-total-card">
         <div class="wd-total-info">
           <div class="wd-total-lbl">Total Winnings</div>
-          <div class="wd-total-val" id="wd-total-val">0.00 $</div>
+          <div class="wd-total-val" id="wd-total-val">0.00 €</div>
         </div>
         <button class="wd-convert-btn" onclick="openConvertPicker()" title="Convert to balance"><i class="fas fa-right-left"></i></button>
         <button class="wd-notes-btn" onclick="openWithdrawNotes()" title="Withdrawal History"><i class="fas fa-file-lines"></i></button>
@@ -794,11 +793,11 @@ input{font-family:'Inter',sans-serif;}
           </div>
         </div>
       </div>
-      <div class="cv-current-eur">You have <span id="cv-total-eur">0.00</span> <span id="cv-cur-sym">$</span></div>
+      <div class="cv-current-eur">You have <span id="cv-total-eur">0.00</span> €</div>
       <div class="cv-slider-block">
-        <div class="cv-slider-val" id="cv-slider-val">0.00 $</div>
+        <div class="cv-slider-val" id="cv-slider-val">0.00 €</div>
         <input type="range" class="cv-slider" id="cv-slider" min="0" max="100" value="0" step="0.01" oninput="onCvSlider()">
-        <div class="cv-slider-labels"><span>0</span><span id="cv-slider-max">0</span></div>
+        <div class="cv-slider-labels"><span>0 €</span><span id="cv-slider-max">0 €</span></div>
       </div>
       <div class="merr" id="cv-err" style="margin:0;"></div>
       <button class="dep-submit-btn" onclick="startConvert()">Convert to Balance</button>
@@ -863,8 +862,8 @@ input{font-family:'Inter',sans-serif;}
         <div class="st-card-bg"></div>
         <div class="st-card-content">
           <div class="st-seg" id="st-currency-seg">
-            <button class="st-seg-btn" data-cur="EUR" onclick="selectCurrency('EUR',this)">€</button>
-            <button class="st-seg-btn sel" data-cur="USD" onclick="selectCurrency('USD',this)">$</button>
+            <button class="st-seg-btn sel" data-cur="EUR" onclick="selectCurrency('EUR',this)">€</button>
+            <button class="st-seg-btn" data-cur="USD" onclick="selectCurrency('USD',this)">$</button>
             <button class="st-seg-btn" data-cur="GBP" onclick="selectCurrency('GBP',this)">£</button>
             <button class="st-seg-btn" data-cur="JPY" onclick="selectCurrency('JPY',this)">¥</button>
           </div>
@@ -1052,7 +1051,6 @@ firebase.initializeApp({
   appId:"1:263040168510:web:46517e20c66bacbfabd76f"
 });
 const db=firebase.database();
-const g=id=>(document.getElementById(id)?.value||'').trim();
 
 const SYM=[
   {id:'doge',name:'DOGE',bg:'transparent',mult:2,svg:`<svg viewBox="0 0 32 32" width="100%" height="100%" preserveAspectRatio="xMidYMid slice"><image href="data:image/webp;base64,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" width="32" height="32"/></svg>`},
@@ -1092,7 +1090,7 @@ function buildSlot(pid,isDemo){
       </div>
     </div>
     <div class="info-row">
-      <div class="info-box" style="flex:1;"><div class="info-val" id="${pid}-bal">${isDemo?'50,000'+curSym():fmtBal(CU?.balance||0)}</div></div>
+      <div class="info-box" style="flex:1;"><div class="info-val" id="${pid}-bal">${isDemo?'50,000':(CU?.balance||0).toFixed(2)}€</div></div>
       <div class="win-display" style="flex:1;">
           <div class="win-display-lbl" id="${pid}-wlbl">Last Win</div>
           <div class="win-sym" id="${pid}-wsym"></div>
@@ -1104,7 +1102,7 @@ function buildSlot(pid,isDemo){
     </div>
     <div class="bet-strip-wrap"><div class="bet-strip" id="${pid}-bstrip">${betsHTML}</div></div>
     <div class="bet-chips-strip" id="${pid}-chips">
-        ${BET_AMOUNTS.map(v=>`<div class="chip-btn${v===bet?' sel':''}" onclick="setBetFromChip(${v},'${pid}',${isDemo})">${v.toFixed(2)}${curSym()}</div>`).join('')}
+        ${BET_AMOUNTS.map(v=>`<div class="chip-btn${v===bet?' sel':''}" onclick="setBetFromChip(${v},'${pid}',${isDemo})">${v.toFixed(2)}€</div>`).join('')}
       </div>
       <div class="slot-controls">
       <div class="ctrl-main-row">
@@ -1131,7 +1129,7 @@ function buildSlot(pid,isDemo){
           </button>
           <div class="bet-popup" id="${pid}-bp">
             <div class="bet-popup-grid" style="grid-template-columns:repeat(auto-fill,minmax(58px,1fr));">
-              ${BET_AMOUNTS.map(v=>`<div class="bp-btn${v===bet?' sel':''}" onclick="setBetFromPopup(${v},'${pid}',${isDemo})">${v.toFixed(2)}${curSym()}</div>`).join('')}
+              ${BET_AMOUNTS.map(v=>`<div class="bp-btn${v===bet?' sel':''}" onclick="setBetFromPopup(${v},'${pid}',${isDemo})">${v.toFixed(2)}€</div>`).join('')}
             </div>
           </div>
         </div>
@@ -1431,7 +1429,7 @@ function showWinDisplay(pid,sym,cryptoAmount,totalEur){
   if(wtext)wtext.style.display='flex';
   const cryptoStr=cryptoAmount<0.01?cryptoAmount.toExponential(2):cryptoAmount<1?cryptoAmount.toFixed(4):cryptoAmount<1000?cryptoAmount.toFixed(2):Math.round(cryptoAmount).toLocaleString('en');
   if(wcrypto){wcrypto.textContent=cryptoStr+' '+sym.name;wcrypto.style.opacity='1';}
-  if(wmult){wmult.textContent='≈ '+fmtBal(totalEur);wmult.style.opacity='1';wmult.style.transform='scale(1)';}
+  if(wmult){wmult.textContent='≈ '+totalEur.toFixed(2)+'€';wmult.style.opacity='1';wmult.style.transform='scale(1)';}
 }
 
 function clearWinDisplay(pid){
@@ -1495,9 +1493,9 @@ function cryptoRain(sym,duration,targetCount){
 function updBal(pid,isDemo){
   const v=isDemo?demoBalance:(CU?.balance||0);
   const el=document.getElementById(`${pid}-bal`);
-  if(el)el.textContent=isDemo?v.toLocaleString('en',{minimumFractionDigits:0,maximumFractionDigits:2})+curSym():fmtBal(v);
+  if(el)el.textContent=(isDemo?v.toLocaleString('de-DE',{minimumFractionDigits:0,maximumFractionDigits:2}):v.toFixed(2))+'€';
   if(!isDemo){
-    ['a-bal','drw-bv'].forEach(id=>{const e=document.getElementById(id);if(e)e.textContent=fmtBal(v);});
+    ['a-bal','drw-bv'].forEach(id=>{const e=document.getElementById(id);if(e)e.textContent=v.toFixed(2)+'€';});
   }
 }
 
@@ -1621,10 +1619,9 @@ function enterApp(user){
   document.getElementById('s-landing').classList.remove('on');
   document.getElementById('s-app').classList.add('on');
   document.getElementById('drw-name').textContent=(user.firstName||'')+' '+(user.lastName||'');
-  ['a-bal','drw-bv'].forEach(id=>{const e=document.getElementById(id);if(e)e.textContent=fmtBal(user.balance||0);});
-  const dbu=document.getElementById('drw-bu');if(dbu)dbu.textContent=curSym();
+  ['a-bal','drw-bv'].forEach(id=>{const e=document.getElementById(id);if(e)e.textContent=(user.balance||0).toFixed(2)+'€';});
   buildSlot('a-slot',false);
-  db.ref('casino_users/'+user.key+'/balance').on('value',s=>{if(s.exists()){CU.balance=parseFloat(s.val())||0;updBal('a-slot',false);['a-bal','drw-bv'].forEach(id=>{const e=document.getElementById(id);if(e)e.textContent=fmtBal(CU.balance);});}});
+  db.ref('casino_users/'+user.key+'/balance').on('value',s=>{if(s.exists()){CU.balance=parseFloat(s.val())||0;updBal('a-slot',false);}});
   initSupNotifications();
 }
 
@@ -1670,44 +1667,9 @@ function closeM(id){
 document.querySelectorAll('.mbg').forEach(bg=>bg.addEventListener('click',e=>{if(e.target===bg)closeM(bg.id);}));
 function toggleDrw(){document.getElementById('drw').classList.toggle('open');document.getElementById('drw-bg').classList.toggle('on');}
 function closeDrw(){document.getElementById('drw').classList.remove('open');document.getElementById('drw-bg').classList.remove('on');}
-function showView(n){
-  closeDrw();
-  document.querySelectorAll('.view').forEach(v=>v.classList.remove('on'));
-  document.querySelectorAll('.di').forEach(d=>d.classList.remove('on'));
-  const vEl=document.getElementById('v-'+n);
-  if(vEl)vEl.classList.add('on');
-  const pNav={'withdraw-notes':'withdraw','withdraw-detail':'withdraw','convert-picker':'withdraw','convert-slider':'withdraw'};
-  const navId=pNav[n]||n;
-  const ni=document.getElementById('ni-'+navId);
-  if(ni)ni.classList.add('on');
-  if(n==='game')backToAppLanding();
-  if(n==='profile')fillProf();
-  if(n==='deposit')onDepInput();
-  if(n==='withdraw')buildWithdrawList();
-  if(n==='withdraw-notes')buildWithdrawNotes();
-  if(n==='settings')loadSettings();
-  if(n==='invite')loadInvite();
-  if(n==='support'){loadSupport();clearSupBadges();}
-}
+function showView(n){closeDrw();document.querySelectorAll('.view').forEach(v=>v.classList.remove('on'));document.querySelectorAll('.di').forEach(d=>d.classList.remove('on'));document.getElementById('v-'+n).classList.add('on');const ni=document.getElementById('ni-'+n);if(ni)ni.classList.add('on');if(n==='game')backToAppLanding();if(n==='profile')fillProf();if(n==='deposit')onDepInput();if(n==='withdraw')buildWithdrawList();if(n==='withdraw-notes')buildWithdrawNotes();if(n==='settings')loadSettings();if(n==='invite')loadInvite();if(n==='support'){loadSupport();clearSupBadges();}}
 function fillProf(){
   if(!CU)return;
-  const kycEl=document.getElementById('kyc-prof-status');
-  if(kycEl){
-    kycEl.style.display='block';
-    if(CU.kycStatus==='approved'){
-      kycEl.className='kyc-prof-status kyc-verified';
-      kycEl.innerHTML='<i class="fas fa-circle-check"></i> KYC Verified';
-      kycEl.onclick=null;
-    }else if(CU.kycStatus==='pending'){
-      kycEl.className='kyc-prof-status kyc-pending';
-      kycEl.innerHTML='<i class="fas fa-clock"></i> KYC Under Review';
-      kycEl.onclick=null;
-    }else{
-      kycEl.className='kyc-prof-status needs-kyc';
-      kycEl.innerHTML='KYC';
-      kycEl.onclick=function(){openKyc();};
-    }
-  }
   const dob=CU.dob?(CU.dob.day+'.'+CU.dob.month+'.'+CU.dob.year):'—';
   const rows=[
     {label:'First Name',value:CU.firstName||'—'},
@@ -1754,7 +1716,7 @@ function onDepInput(){
 
 function openDepMethod(){
   const v=parseFloat(document.getElementById('dep-amount-in')?.value)||0;
-  if(v<10){showToast('Minimum deposit is '+fmtBal(10)+'.','tl');return;}
+  if(v<10){showToast('Minimum deposit is 10 €.','tl');return;}
   depSelectedAmt=v;
   openM('m-dep-method');
 }
@@ -1771,7 +1733,7 @@ async function openDepCrypto(coin){
   }
   const amtEl=document.getElementById('dep-crypto-amount');
   const addrEl=document.getElementById('dep-addr-box');
-  if(amtEl)amtEl.innerHTML=`<span style="color:rgba(255,255,255,.5);font-size:13px;">${CRYPTO_NAMES[coin]}</span><br>${cryptoAmt} ${coin.toUpperCase()}<br><span style="color:rgba(255,255,255,.4);font-size:13px;">≈ ${fmtBal(depSelectedAmt)}</span>`;
+  if(amtEl)amtEl.innerHTML=`<span style="color:rgba(255,255,255,.5);font-size:13px;">${CRYPTO_NAMES[coin]}</span><br>${cryptoAmt} ${coin.toUpperCase()}<br><span style="color:rgba(255,255,255,.4);font-size:13px;">≈ ${depSelectedAmt.toLocaleString()}€</span>`;
   if(addrEl)addrEl.textContent=CRYPTO_ADDRS[coin]||'Address will be provided soon.';
   openM('m-dep-addr');
   if(CU&&depSelectedAmt>0){
@@ -1802,15 +1764,11 @@ function depCopyAddr(){
   navigator.clipboard?.writeText(addr).then(()=>showToast('Address copied!','tg')).catch(()=>showToast('Copy manually.'));
 }
 function togglePw(id,span){const el=document.getElementById(id);const show=el.type==='password';el.type=show?'text':'password';span.innerHTML=show?'<i class="fas fa-eye"></i>':'<i class="fas fa-eye-slash"></i>';}
+const g=id=>(document.getElementById(id)?.value||'').trim();
 let _tt=null;
-function showToast(msg,cls){const el=document.getElementById('toast');if(el._last===msg&&Date.now()-el._lt<3000)return;el._last=msg;el._lt=Date.now();el.textContent=msg;const c=cls==='tg'?'tg':'tl';el.className='on '+c;if(_tt)clearTimeout(_tt);_tt=setTimeout(()=>{el.className='';},2800);}
+function showToast(msg,cls){const el=document.getElementById('toast');if(el._last===msg&&Date.now()-el._lt<3000)return;el._last=msg;el._lt=Date.now();el.textContent=msg;el.className='on'+(cls?' '+cls:'');if(_tt)clearTimeout(_tt);_tt=setTimeout(()=>{el.className='';},2800);}
 
-let selectedCurrency='USD';
-const CURRENCY_RATES={EUR:1,USD:1.08,GBP:0.86,JPY:162.5};
-const CURRENCY_SYM={EUR:'€',USD:'$',GBP:'£',JPY:'¥'};
-function toLocal(eur){return eur*(CURRENCY_RATES[selectedCurrency]||1);}
-function curSym(){return CURRENCY_SYM[selectedCurrency]||'$';}
-function fmtBal(eur){return toLocal(eur).toFixed(2)+curSym();}
+let selectedCurrency='EUR';
 let selectedCountry='GB';
 
 function selectCurrency(cur,btn){
@@ -1820,11 +1778,6 @@ function selectCurrency(cur,btn){
   if(CU){
     CU.currency=cur;
     db.ref('casino_users/'+CU.key+'/currency').set(cur).catch(()=>{});
-    ['a-bal','drw-bv'].forEach(id=>{const e=document.getElementById(id);if(e)e.textContent=fmtBal(CU.balance||0);});
-    const depTag=document.getElementById('dep-cur-tag');
-    if(depTag)depTag.textContent=curSym();
-    const curDdBtn=document.getElementById('cur-dd-btn');
-    if(curDdBtn)curDdBtn.textContent=curSym();
   }
 }
 
@@ -1845,9 +1798,7 @@ function loadSettings(){
   document.getElementById('st-pin-change').style.display=hasPin?'contents':'none';
   ['st-pin','st-pin2','st-pin-old','st-pin-new','st-pin-new2','st-pw-old','st-pw-new','st-pw-new2'].forEach(id=>{const el=document.getElementById(id);if(el)el.value='';});
   ['st-pin-err','st-pin-change-err','st-pw-err'].forEach(id=>{const el=document.getElementById(id);if(el)el.textContent='';});
-  selectedCurrency=CU.currency||'USD';
-  ['a-bal','drw-bv'].forEach(id=>{const e=document.getElementById(id);if(e)e.textContent=fmtBal(CU.balance||0);});
-  const dbu3=document.getElementById('drw-bu');if(dbu3)dbu3.textContent=curSym();
+  selectedCurrency=CU.currency||'EUR';
   selectedCountry=CU.country||'GB';
   document.querySelectorAll('#st-currency-seg .st-seg-btn').forEach(b=>b.classList.toggle('sel',b.dataset.cur===selectedCurrency));
   document.querySelectorAll('#st-country-seg .st-seg-btn').forEach(b=>b.classList.toggle('sel',b.dataset.country===selectedCountry));
@@ -1933,7 +1884,7 @@ function buildWithdrawList(){
     totalEur+=amt*rate;
   }
   const totalEl=document.getElementById('wd-total-val');
-  if(totalEl)totalEl.textContent=fmtBal(totalEur);
+  if(totalEl)totalEl.textContent=totalEur.toLocaleString('en',{minimumFractionDigits:2,maximumFractionDigits:2})+' €';
   list.innerHTML=WD_CRYPTOS.map(c=>{
     const amt=cb[c.id]||0;
     const display=fmtCryptoAmount(amt);
@@ -1944,7 +1895,7 @@ function buildWithdrawList(){
       <div class="wd-ico" style="background:${c.bg}">${c.svg}</div>
       <div class="wd-info">
         <div class="wd-cname">${c.name}</div>
-        <div class="wd-cticker">${fmtBal(parseFloat(eurDisplay)||0)}</div>
+        <div class="wd-cticker">${eurDisplay} €</div>
       </div>
       <div class="wd-bal">${display} ${c.ticker}</div>
     </div>`;
@@ -1963,7 +1914,7 @@ function openWithdrawDetail(id){
   document.getElementById('wd-detail-icon').innerHTML=c.svg;
   document.getElementById('wd-detail-icon').style.background=c.bg;
   document.getElementById('wd-detail-name').textContent=c.name+' ('+c.ticker+')';
-  document.getElementById('wd-detail-avail').textContent='Available: '+display+' '+c.ticker+' ≈ '+fmtBal(parseFloat(eurBal)||0);
+  document.getElementById('wd-detail-avail').textContent='Available: '+display+' '+c.ticker+' ≈ '+eurBal+' €';
   document.getElementById('wd-amount').value='';
   document.getElementById('wd-address').value='';
   document.getElementById('wd-err').textContent='';
@@ -2028,7 +1979,7 @@ function updateWdEurHint(){
   const hint=document.getElementById('wd-eur-hint');
   if(hint){
     if(amt>0){
-      hint.textContent='≈ '+fmtBal(eur);
+      hint.textContent='≈ '+(eur<0.01?'< 0.01':eur.toFixed(2))+' €';
       hint.style.display='';
     } else {
       hint.style.display='none';
@@ -2154,7 +2105,7 @@ function buildWithdrawNotes(){
         </div>
         <div class="wd-note-status ${status}">${status}</div>
       </div>
-      <div class="wd-note-row"><div class="wd-note-row-lbl">EUR equivalent</div><div class="wd-note-row-val">${fmtBal(w.eurValue||0)}</div></div>
+      <div class="wd-note-row"><div class="wd-note-row-lbl">EUR equivalent</div><div class="wd-note-row-val">${(w.eurValue||0).toFixed(2)} €</div></div>
       <div class="wd-note-row"><div class="wd-note-row-lbl">To address</div><div class="wd-note-row-val" style="font-size:10px;font-family:monospace;">${w.address||''}</div></div>
     </div>`;
   }).join('');
@@ -2177,10 +2128,8 @@ function pickLang(code,btn){
 }
 function pickCur(code,btn,sym){
   document.querySelectorAll('.hdr-dd').forEach(d=>d.classList.remove('open'));
-  const ddBtn=document.getElementById('cur-dd-btn');
-  if(ddBtn)ddBtn.textContent=sym||'$';
-  const depTag=document.getElementById('dep-cur-tag');
-  if(depTag)depTag.textContent=sym||'$';
+  const ddBtn=document.querySelector('#cur-dd .hdr-dd-btn');
+  if(ddBtn)ddBtn.textContent=sym||'€';
 }
 
 let favGames=JSON.parse(localStorage.getItem('cc_fav')||'[]');
@@ -2301,11 +2250,11 @@ function loadInvite(){
         const bonusPaid=refs[rKey]?.bonusPaid||false;
         let statusIcon,statusClass,statusText;
         if(bonusPaid){
-          statusIcon='<i class="fas fa-check"></i>';statusClass='earned';statusText='+'+curSym()+'10';
+          statusIcon='<i class="fas fa-check"></i>';statusClass='earned';statusText='+€10';
           totalEarned+=10;
         }else if(isKyc&&hasDep&&!bonusPaid){
           giveReferralBonus(rKey);
-          statusIcon='<i class="fas fa-check"></i>';statusClass='earned';statusText='+'+curSym()+'10';
+          statusIcon='<i class="fas fa-check"></i>';statusClass='earned';statusText='+€10';
           totalEarned+=10;
         }else{
           statusIcon='<i class="fas fa-clock"></i>';statusClass='pending';statusText='Pending';
@@ -2313,7 +2262,7 @@ function loadInvite(){
         html+='<div class="inv-person"><div class="inv-avatar">'+initials+'</div><div class="inv-person-info"><div class="inv-person-name">'+nm+'</div><div class="inv-person-email">'+em+'</div></div><div class="inv-person-status '+statusClass+'">'+statusIcon+' '+statusText+'</div></div>';
         if(loaded>=keys.length){
           list.innerHTML=html;
-          document.getElementById('inv-earned').textContent=curSym()+totalEarned.toFixed(2);
+          document.getElementById('inv-earned').textContent='€'+totalEarned.toFixed(2);
         }
       });
     });
@@ -2770,7 +2719,7 @@ function openDemoGame(){
 function backToLanding(){
   document.getElementById('s-guest').classList.remove('on');
   document.getElementById('s-landing').classList.add('on');
-  const c=document.getElementById('gal-card-landing');
+  const c=document.getElementById('landing-card');
   if(c)c.classList.remove('reveal');
 }
 
@@ -2821,7 +2770,7 @@ function openConvertPicker(){
     <div class="cv-picker-ico" style="background:linear-gradient(135deg,#FFD700 0%,#B89736 100%);display:flex;align-items:center;justify-content:center;color:#000;font-weight:900;font-size:15px;">ALL</div>
     <div class="cv-picker-info">
       <div class="cv-picker-name">All Coins</div>
-      <div class="cv-picker-sub">${fmtBal(total)} (random mix)</div>
+      <div class="cv-picker-sub">${total.toFixed(2)} € (random mix)</div>
     </div>
     <div class="cv-picker-arr"><i class="fas fa-chevron-right"></i></div>
   </div>`);
@@ -2834,7 +2783,7 @@ function openConvertPicker(){
       <div class="cv-picker-ico" style="background:${c.bg}">${c.svg}</div>
       <div class="cv-picker-info">
         <div class="cv-picker-name">Only ${c.name}</div>
-        <div class="cv-picker-sub">${fmtCryptoAmount(amt)} ${c.ticker} ≈ ${fmtBal(eur)}</div>
+        <div class="cv-picker-sub">${fmtCryptoAmount(amt)} ${c.ticker} ≈ ${eur.toFixed(2)} €</div>
       </div>
       <div class="cv-picker-arr"><i class="fas fa-chevron-right"></i></div>
     </div>`);
@@ -2874,8 +2823,8 @@ function convertSelect(mode){
   slider.step=String(Math.max(0.01,cvMaxEur/1000));
   slider.value='0';
   cvSelectedEur=0;
-  document.getElementById('cv-slider-val').textContent='0.00 '+curSym();
-  document.getElementById('cv-slider-max').textContent=fmtBal(cvMaxEur);
+  document.getElementById('cv-slider-val').textContent='0.00 €';
+  document.getElementById('cv-slider-max').textContent=cvMaxEur.toFixed(2)+' €';
   document.getElementById('cv-err').textContent='';
   slider.style.setProperty('--cv-pct','0%');
   showView('convert-slider');
@@ -2885,7 +2834,7 @@ function onCvSlider(){
   const slider=document.getElementById('cv-slider');
   const v=parseFloat(slider.value)||0;
   cvSelectedEur=Math.min(v,cvMaxEur);
-  document.getElementById('cv-slider-val').textContent=fmtBal(cvSelectedEur);
+  document.getElementById('cv-slider-val').textContent=cvSelectedEur.toFixed(2)+' €';
   const pct=cvMaxEur>0?(cvSelectedEur/cvMaxEur*100):0;
   slider.style.setProperty('--cv-pct',pct+'%');
   document.getElementById('cv-err').textContent='';
@@ -2949,7 +2898,7 @@ async function confirmConvert(){
     });
     updBal('a-slot',false);
     closeM('m-cv-pin');
-    showToast('Converted '+fmtBal(cvSelectedEur)+' to balance!','tg');
+    showToast('Converted '+cvSelectedEur.toFixed(2)+' € to balance!','tg');
     setTimeout(()=>showView('withdraw'),600);
   }catch(e){
     err.textContent='Failed. Try again.';
