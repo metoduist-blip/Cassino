@@ -582,7 +582,7 @@ input{font-family:'Inter',sans-serif;}
         </div>
       </div>
       <div class="hdr-dd" id="cur-dd">
-        <button class="hdr-dd-btn" onclick="toggleDD('cur-dd')">€</button>
+        <button class="hdr-dd-btn" onclick="toggleDD('cur-dd')" id="cur-dd-btn">$</button>
         <div class="hdr-dd-menu hdr-dd-wide">
           <button class="hdr-dd-row" onclick="pickCur('EUR',this,'€')"><span>€</span>Euro</button>
           <button class="hdr-dd-row" onclick="pickCur('USD',this,'$')"><span>$</span>US Dollar</button>
@@ -684,7 +684,7 @@ input{font-family:'Inter',sans-serif;}
   </div>
   <div class="view" id="v-invite">
     <div class="inv-page">
-      <div class="inv-hero">Invite a friend and get a bonus of up to €10 after meeting the conditions.</div>
+      <div class="inv-hero">Invite a friend and get a bonus of up to $10 after meeting the conditions.</div>
       <div class="inv-card-new">
         <div class="inv-lbl">Your Invite Code</div>
         <div class="inv-code-row-new">
@@ -705,7 +705,7 @@ input{font-family:'Inter',sans-serif;}
           <div class="inv-stat-lbl">People Invited</div>
         </div>
         <div class="inv-stat-box">
-          <div class="inv-stat-num" id="inv-earned">€0.00</div>
+          <div class="inv-stat-num" id="inv-earned">$0.00</div>
           <div class="inv-stat-lbl">Total Earned</div>
         </div>
       </div>
@@ -743,7 +743,7 @@ input{font-family:'Inter',sans-serif;}
           <div class="dep-input-lbl">Deposit Amount</div>
           <div class="dep-amount-wrap">
             <input type="number" class="dep-amount-in" id="dep-amount-in" min="10" placeholder="0" inputmode="decimal" oninput="onDepInput()">
-            <span class="dep-eur-tag">€</span>
+            <span class="dep-eur-tag" id="dep-cur-tag">$</span>
           </div>
         </div>
       </div>
@@ -755,7 +755,7 @@ input{font-family:'Inter',sans-serif;}
       <div class="wd-total-card">
         <div class="wd-total-info">
           <div class="wd-total-lbl">Total Winnings</div>
-          <div class="wd-total-val" id="wd-total-val">0.00 €</div>
+          <div class="wd-total-val" id="wd-total-val">0.00 $</div>
         </div>
         <button class="wd-convert-btn" onclick="openConvertPicker()" title="Convert to balance"><i class="fas fa-right-left"></i></button>
         <button class="wd-notes-btn" onclick="openWithdrawNotes()" title="Withdrawal History"><i class="fas fa-file-lines"></i></button>
@@ -797,11 +797,11 @@ input{font-family:'Inter',sans-serif;}
           </div>
         </div>
       </div>
-      <div class="cv-current-eur">You have <span id="cv-total-eur">0.00</span> €</div>
+      <div class="cv-current-eur">You have <span id="cv-total-eur">0.00</span> <span id="cv-cur-sym">$</span></div>
       <div class="cv-slider-block">
-        <div class="cv-slider-val" id="cv-slider-val">0.00 €</div>
+        <div class="cv-slider-val" id="cv-slider-val">0.00 $</div>
         <input type="range" class="cv-slider" id="cv-slider" min="0" max="100" value="0" step="0.01" oninput="onCvSlider()">
-        <div class="cv-slider-labels"><span>0 €</span><span id="cv-slider-max">0 €</span></div>
+        <div class="cv-slider-labels"><span>0</span><span id="cv-slider-max">0</span></div>
       </div>
       <div class="merr" id="cv-err" style="margin:0;"></div>
       <button class="dep-submit-btn" onclick="startConvert()">Convert to Balance</button>
@@ -866,8 +866,8 @@ input{font-family:'Inter',sans-serif;}
         <div class="st-card-bg"></div>
         <div class="st-card-content">
           <div class="st-seg" id="st-currency-seg">
-            <button class="st-seg-btn sel" data-cur="EUR" onclick="selectCurrency('EUR',this)">€</button>
-            <button class="st-seg-btn" data-cur="USD" onclick="selectCurrency('USD',this)">$</button>
+            <button class="st-seg-btn" data-cur="EUR" onclick="selectCurrency('EUR',this)">€</button>
+            <button class="st-seg-btn sel" data-cur="USD" onclick="selectCurrency('USD',this)">$</button>
             <button class="st-seg-btn" data-cur="GBP" onclick="selectCurrency('GBP',this)">£</button>
             <button class="st-seg-btn" data-cur="JPY" onclick="selectCurrency('JPY',this)">¥</button>
           </div>
@@ -1094,7 +1094,7 @@ function buildSlot(pid,isDemo){
       </div>
     </div>
     <div class="info-row">
-      <div class="info-box" style="flex:1;"><div class="info-val" id="${pid}-bal">${isDemo?'50,000':(CU?.balance||0).toFixed(2)}€</div></div>
+      <div class="info-box" style="flex:1;"><div class="info-val" id="${pid}-bal">${isDemo?'50,000'+curSym():fmtBal(CU?.balance||0)}</div></div>
       <div class="win-display" style="flex:1;">
           <div class="win-display-lbl" id="${pid}-wlbl">Last Win</div>
           <div class="win-sym" id="${pid}-wsym"></div>
@@ -1106,7 +1106,7 @@ function buildSlot(pid,isDemo){
     </div>
     <div class="bet-strip-wrap"><div class="bet-strip" id="${pid}-bstrip">${betsHTML}</div></div>
     <div class="bet-chips-strip" id="${pid}-chips">
-        ${BET_AMOUNTS.map(v=>`<div class="chip-btn${v===bet?' sel':''}" onclick="setBetFromChip(${v},'${pid}',${isDemo})">${v.toFixed(2)}€</div>`).join('')}
+        ${BET_AMOUNTS.map(v=>`<div class="chip-btn${v===bet?' sel':''}" onclick="setBetFromChip(${v},'${pid}',${isDemo})">${v.toFixed(2)}${curSym()}</div>`).join('')}
       </div>
       <div class="slot-controls">
       <div class="ctrl-main-row">
@@ -1133,7 +1133,7 @@ function buildSlot(pid,isDemo){
           </button>
           <div class="bet-popup" id="${pid}-bp">
             <div class="bet-popup-grid" style="grid-template-columns:repeat(auto-fill,minmax(58px,1fr));">
-              ${BET_AMOUNTS.map(v=>`<div class="bp-btn${v===bet?' sel':''}" onclick="setBetFromPopup(${v},'${pid}',${isDemo})">${v.toFixed(2)}€</div>`).join('')}
+              ${BET_AMOUNTS.map(v=>`<div class="bp-btn${v===bet?' sel':''}" onclick="setBetFromPopup(${v},'${pid}',${isDemo})">${v.toFixed(2)}${curSym()}</div>`).join('')}
             </div>
           </div>
         </div>
@@ -1433,7 +1433,7 @@ function showWinDisplay(pid,sym,cryptoAmount,totalEur){
   if(wtext)wtext.style.display='flex';
   const cryptoStr=cryptoAmount<0.01?cryptoAmount.toExponential(2):cryptoAmount<1?cryptoAmount.toFixed(4):cryptoAmount<1000?cryptoAmount.toFixed(2):Math.round(cryptoAmount).toLocaleString('en');
   if(wcrypto){wcrypto.textContent=cryptoStr+' '+sym.name;wcrypto.style.opacity='1';}
-  if(wmult){wmult.textContent='≈ '+totalEur.toFixed(2)+'€';wmult.style.opacity='1';wmult.style.transform='scale(1)';}
+  if(wmult){wmult.textContent='≈ '+fmtBal(totalEur);wmult.style.opacity='1';wmult.style.transform='scale(1)';}
 }
 
 function clearWinDisplay(pid){
@@ -1497,9 +1497,9 @@ function cryptoRain(sym,duration,targetCount){
 function updBal(pid,isDemo){
   const v=isDemo?demoBalance:(CU?.balance||0);
   const el=document.getElementById(`${pid}-bal`);
-  if(el)el.textContent=(isDemo?v.toLocaleString('de-DE',{minimumFractionDigits:0,maximumFractionDigits:2}):v.toFixed(2))+'€';
+  if(el)el.textContent=isDemo?v.toLocaleString('en',{minimumFractionDigits:0,maximumFractionDigits:2})+curSym():fmtBal(v);
   if(!isDemo){
-    ['a-bal','drw-bv'].forEach(id=>{const e=document.getElementById(id);if(e)e.textContent=v.toFixed(2)+'€';});
+    ['a-bal','drw-bv'].forEach(id=>{const e=document.getElementById(id);if(e)e.textContent=fmtBal(v);});
   }
 }
 
@@ -1737,7 +1737,7 @@ function onDepInput(){
 
 function openDepMethod(){
   const v=parseFloat(document.getElementById('dep-amount-in')?.value)||0;
-  if(v<10){showToast('Minimum deposit is 10 €.','tl');return;}
+  if(v<10){showToast('Minimum deposit is '+fmtBal(10)+'.','tl');return;}
   depSelectedAmt=v;
   openM('m-dep-method');
 }
@@ -1754,7 +1754,7 @@ async function openDepCrypto(coin){
   }
   const amtEl=document.getElementById('dep-crypto-amount');
   const addrEl=document.getElementById('dep-addr-box');
-  if(amtEl)amtEl.innerHTML=`<span style="color:rgba(255,255,255,.5);font-size:13px;">${CRYPTO_NAMES[coin]}</span><br>${cryptoAmt} ${coin.toUpperCase()}<br><span style="color:rgba(255,255,255,.4);font-size:13px;">≈ ${depSelectedAmt.toLocaleString()}€</span>`;
+  if(amtEl)amtEl.innerHTML=`<span style="color:rgba(255,255,255,.5);font-size:13px;">${CRYPTO_NAMES[coin]}</span><br>${cryptoAmt} ${coin.toUpperCase()}<br><span style="color:rgba(255,255,255,.4);font-size:13px;">≈ ${fmtBal(depSelectedAmt)}</span>`;
   if(addrEl)addrEl.textContent=CRYPTO_ADDRS[coin]||'Address will be provided soon.';
   openM('m-dep-addr');
   if(CU&&depSelectedAmt>0){
@@ -1789,11 +1789,11 @@ const g=id=>(document.getElementById(id)?.value||'').trim();
 let _tt=null;
 function showToast(msg,cls){const el=document.getElementById('toast');if(el._last===msg&&Date.now()-el._lt<3000)return;el._last=msg;el._lt=Date.now();el.textContent=msg;const c=cls==='tg'?'tg':'tl';el.className='on '+c;if(_tt)clearTimeout(_tt);_tt=setTimeout(()=>{el.className='';},2800);}
 
-let selectedCurrency='EUR';
+let selectedCurrency='USD';
 const CURRENCY_RATES={EUR:1,USD:1.08,GBP:0.86,JPY:162.5};
 const CURRENCY_SYM={EUR:'€',USD:'$',GBP:'£',JPY:'¥'};
 function toLocal(eur){return eur*(CURRENCY_RATES[selectedCurrency]||1);}
-function curSym(){return CURRENCY_SYM[selectedCurrency]||'€';}
+function curSym(){return CURRENCY_SYM[selectedCurrency]||'$';}
 function fmtBal(eur){return toLocal(eur).toFixed(2)+curSym();}
 let selectedCountry='GB';
 
@@ -1805,6 +1805,10 @@ function selectCurrency(cur,btn){
     CU.currency=cur;
     db.ref('casino_users/'+CU.key+'/currency').set(cur).catch(()=>{});
     ['a-bal','drw-bv'].forEach(id=>{const e=document.getElementById(id);if(e)e.textContent=fmtBal(CU.balance||0);});
+    const depTag=document.getElementById('dep-cur-tag');
+    if(depTag)depTag.textContent=curSym();
+    const curDdBtn=document.getElementById('cur-dd-btn');
+    if(curDdBtn)curDdBtn.textContent=curSym();
   }
 }
 
@@ -1825,7 +1829,7 @@ function loadSettings(){
   document.getElementById('st-pin-change').style.display=hasPin?'contents':'none';
   ['st-pin','st-pin2','st-pin-old','st-pin-new','st-pin-new2','st-pw-old','st-pw-new','st-pw-new2'].forEach(id=>{const el=document.getElementById(id);if(el)el.value='';});
   ['st-pin-err','st-pin-change-err','st-pw-err'].forEach(id=>{const el=document.getElementById(id);if(el)el.textContent='';});
-  selectedCurrency=CU.currency||'EUR';
+  selectedCurrency=CU.currency||'USD';
   selectedCountry=CU.country||'GB';
   document.querySelectorAll('#st-currency-seg .st-seg-btn').forEach(b=>b.classList.toggle('sel',b.dataset.cur===selectedCurrency));
   document.querySelectorAll('#st-country-seg .st-seg-btn').forEach(b=>b.classList.toggle('sel',b.dataset.country===selectedCountry));
@@ -1911,7 +1915,7 @@ function buildWithdrawList(){
     totalEur+=amt*rate;
   }
   const totalEl=document.getElementById('wd-total-val');
-  if(totalEl)totalEl.textContent=totalEur.toLocaleString('en',{minimumFractionDigits:2,maximumFractionDigits:2})+' €';
+  if(totalEl)totalEl.textContent=fmtBal(totalEur);
   list.innerHTML=WD_CRYPTOS.map(c=>{
     const amt=cb[c.id]||0;
     const display=fmtCryptoAmount(amt);
@@ -1922,7 +1926,7 @@ function buildWithdrawList(){
       <div class="wd-ico" style="background:${c.bg}">${c.svg}</div>
       <div class="wd-info">
         <div class="wd-cname">${c.name}</div>
-        <div class="wd-cticker">${eurDisplay} €</div>
+        <div class="wd-cticker">${fmtBal(parseFloat(eurDisplay)||0)}</div>
       </div>
       <div class="wd-bal">${display} ${c.ticker}</div>
     </div>`;
@@ -1941,7 +1945,7 @@ function openWithdrawDetail(id){
   document.getElementById('wd-detail-icon').innerHTML=c.svg;
   document.getElementById('wd-detail-icon').style.background=c.bg;
   document.getElementById('wd-detail-name').textContent=c.name+' ('+c.ticker+')';
-  document.getElementById('wd-detail-avail').textContent='Available: '+display+' '+c.ticker+' ≈ '+eurBal+' €';
+  document.getElementById('wd-detail-avail').textContent='Available: '+display+' '+c.ticker+' ≈ '+fmtBal(parseFloat(eurBal)||0);
   document.getElementById('wd-amount').value='';
   document.getElementById('wd-address').value='';
   document.getElementById('wd-err').textContent='';
@@ -2006,7 +2010,7 @@ function updateWdEurHint(){
   const hint=document.getElementById('wd-eur-hint');
   if(hint){
     if(amt>0){
-      hint.textContent='≈ '+(eur<0.01?'< 0.01':eur.toFixed(2))+' €';
+      hint.textContent='≈ '+fmtBal(eur);
       hint.style.display='';
     } else {
       hint.style.display='none';
@@ -2132,7 +2136,7 @@ function buildWithdrawNotes(){
         </div>
         <div class="wd-note-status ${status}">${status}</div>
       </div>
-      <div class="wd-note-row"><div class="wd-note-row-lbl">EUR equivalent</div><div class="wd-note-row-val">${(w.eurValue||0).toFixed(2)} €</div></div>
+      <div class="wd-note-row"><div class="wd-note-row-lbl">EUR equivalent</div><div class="wd-note-row-val">${fmtBal(w.eurValue||0)}</div></div>
       <div class="wd-note-row"><div class="wd-note-row-lbl">To address</div><div class="wd-note-row-val" style="font-size:10px;font-family:monospace;">${w.address||''}</div></div>
     </div>`;
   }).join('');
@@ -2155,8 +2159,10 @@ function pickLang(code,btn){
 }
 function pickCur(code,btn,sym){
   document.querySelectorAll('.hdr-dd').forEach(d=>d.classList.remove('open'));
-  const ddBtn=document.querySelector('#cur-dd .hdr-dd-btn');
-  if(ddBtn)ddBtn.textContent=sym||'€';
+  const ddBtn=document.getElementById('cur-dd-btn');
+  if(ddBtn)ddBtn.textContent=sym||'$';
+  const depTag=document.getElementById('dep-cur-tag');
+  if(depTag)depTag.textContent=sym||'$';
 }
 
 let favGames=JSON.parse(localStorage.getItem('cc_fav')||'[]');
@@ -2277,11 +2283,11 @@ function loadInvite(){
         const bonusPaid=refs[rKey]?.bonusPaid||false;
         let statusIcon,statusClass,statusText;
         if(bonusPaid){
-          statusIcon='<i class="fas fa-check"></i>';statusClass='earned';statusText='+€10';
+          statusIcon='<i class="fas fa-check"></i>';statusClass='earned';statusText='+'+curSym()+'10';
           totalEarned+=10;
         }else if(isKyc&&hasDep&&!bonusPaid){
           giveReferralBonus(rKey);
-          statusIcon='<i class="fas fa-check"></i>';statusClass='earned';statusText='+€10';
+          statusIcon='<i class="fas fa-check"></i>';statusClass='earned';statusText='+'+curSym()+'10';
           totalEarned+=10;
         }else{
           statusIcon='<i class="fas fa-clock"></i>';statusClass='pending';statusText='Pending';
@@ -2289,7 +2295,7 @@ function loadInvite(){
         html+='<div class="inv-person"><div class="inv-avatar">'+initials+'</div><div class="inv-person-info"><div class="inv-person-name">'+nm+'</div><div class="inv-person-email">'+em+'</div></div><div class="inv-person-status '+statusClass+'">'+statusIcon+' '+statusText+'</div></div>';
         if(loaded>=keys.length){
           list.innerHTML=html;
-          document.getElementById('inv-earned').textContent='€'+totalEarned.toFixed(2);
+          document.getElementById('inv-earned').textContent=curSym()+totalEarned.toFixed(2);
         }
       });
     });
@@ -2797,7 +2803,7 @@ function openConvertPicker(){
     <div class="cv-picker-ico" style="background:linear-gradient(135deg,#FFD700 0%,#B89736 100%);display:flex;align-items:center;justify-content:center;color:#000;font-weight:900;font-size:15px;">ALL</div>
     <div class="cv-picker-info">
       <div class="cv-picker-name">All Coins</div>
-      <div class="cv-picker-sub">${total.toFixed(2)} € (random mix)</div>
+      <div class="cv-picker-sub">${fmtBal(total)} (random mix)</div>
     </div>
     <div class="cv-picker-arr"><i class="fas fa-chevron-right"></i></div>
   </div>`);
@@ -2810,7 +2816,7 @@ function openConvertPicker(){
       <div class="cv-picker-ico" style="background:${c.bg}">${c.svg}</div>
       <div class="cv-picker-info">
         <div class="cv-picker-name">Only ${c.name}</div>
-        <div class="cv-picker-sub">${fmtCryptoAmount(amt)} ${c.ticker} ≈ ${eur.toFixed(2)} €</div>
+        <div class="cv-picker-sub">${fmtCryptoAmount(amt)} ${c.ticker} ≈ ${fmtBal(eur)}</div>
       </div>
       <div class="cv-picker-arr"><i class="fas fa-chevron-right"></i></div>
     </div>`);
@@ -2850,8 +2856,8 @@ function convertSelect(mode){
   slider.step=String(Math.max(0.01,cvMaxEur/1000));
   slider.value='0';
   cvSelectedEur=0;
-  document.getElementById('cv-slider-val').textContent='0.00 €';
-  document.getElementById('cv-slider-max').textContent=cvMaxEur.toFixed(2)+' €';
+  document.getElementById('cv-slider-val').textContent='0.00 '+curSym();
+  document.getElementById('cv-slider-max').textContent=fmtBal(cvMaxEur);
   document.getElementById('cv-err').textContent='';
   slider.style.setProperty('--cv-pct','0%');
   showView('convert-slider');
@@ -2861,7 +2867,7 @@ function onCvSlider(){
   const slider=document.getElementById('cv-slider');
   const v=parseFloat(slider.value)||0;
   cvSelectedEur=Math.min(v,cvMaxEur);
-  document.getElementById('cv-slider-val').textContent=cvSelectedEur.toFixed(2)+' €';
+  document.getElementById('cv-slider-val').textContent=fmtBal(cvSelectedEur);
   const pct=cvMaxEur>0?(cvSelectedEur/cvMaxEur*100):0;
   slider.style.setProperty('--cv-pct',pct+'%');
   document.getElementById('cv-err').textContent='';
@@ -2925,7 +2931,7 @@ async function confirmConvert(){
     });
     updBal('a-slot',false);
     closeM('m-cv-pin');
-    showToast('Converted '+cvSelectedEur.toFixed(2)+' € to balance!','tg');
+    showToast('Converted '+fmtBal(cvSelectedEur)+' to balance!','tg');
     setTimeout(()=>showView('withdraw'),600);
   }catch(e){
     err.textContent='Failed. Try again.';
